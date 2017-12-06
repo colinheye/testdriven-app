@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask on Docker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> {% block css %} {% endblock %}
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <br>
+                <h1>All Users</h1>
+                <hr>
+                <br>
+                <form action="/" method="POST">
+                    <div class="form-group">
+                        <input name="username" type="text" class="form-control input-lg" placeholder="Enter a username" required>
+                    </div>
+                    <div class="form-group">
+                        <input name="email" type="password" class="form-control input-lg" placeholder="Enter an email address" required>
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit">
+                </form>
+                <br>
+                <hr> {% if users %}
+                <ol>
+                    {% for user in users %}
+                    <li>{{user.username}}</li>
+                    {% endfor %}
+                </ol>
+                {% else %}
+                <p>No Users!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script> {% block js %}{% endblock %}
+</body>
+
+</html>
