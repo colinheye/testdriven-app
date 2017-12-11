@@ -9,7 +9,7 @@ const UsersList = (props) => {
                         <h4
                             key={user.id}
                             className="well"
-                        >{user.email}
+                        >{user.username}
                         </h4>
                     )
                 })
