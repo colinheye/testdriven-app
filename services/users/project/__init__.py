@@ -6,12 +6,12 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_migrate import Migrate
+from flask_bcrypt import Bcrypt
 
-# instantiate the db
+# instantiate the extensions
 db = SQLAlchemy()
-
-# instantiate flask migrate
 migrate = Migrate()
+bcrypt = Bcrypt()
 
 
 def create_app():
