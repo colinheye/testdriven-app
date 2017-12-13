@@ -44,10 +44,16 @@ def test():
 @manager.command
 def seed_db():
     """Seeds the database."""
-    db.session.add(
-        User(username='michael', email='michael@realpython.com', password='test'))
-    db.session.add(
-        User(username='fletcher', email='fletcher@realpython.com', password='test'))
+    db.session.add(User(
+        username='michael',
+        email='michael@realpython.com',
+        password='test'
+    ))
+    db.session.add(User(
+        username='fletcher',
+        email='fletcher@realpython.com',
+        password='test'
+    ))
     db.session.commit()
 
 
