@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Route, Switch } from 'react-router-dom';
 
 import UsersList from './components/UsersList';
 import AddUser from './components/AddUser';
@@ -64,7 +65,7 @@ class App extends Component {
                         />
                         <br />
                         <UsersList users={this.state.users} />
-                        <About />
+                        <Route exact path='/about' component={About} />
                     </div>
                 </div>
             </div>
