@@ -7,6 +7,7 @@
     "pushstate-server": "^3.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17"
   },
   "scripts": {
@@ -18,7 +19,7 @@
   "devDependencies": {
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
-    "jest-cli": "^20.0.4",
+    "jest-cli": "^21.2.1",
     "react-test-renderer": "^16.2.0"
   }
 }
