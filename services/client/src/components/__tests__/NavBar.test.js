@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import { MemoryRouter as Router } from 'react-router-dom';
 
-import NavBar from './NavBar';
+import NavBar from '../NavBar';
 
 const title = 'Hello, World!';
 
