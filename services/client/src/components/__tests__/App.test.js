@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { MemoryRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -25,8 +26,21 @@ const response = {
     }
 }
 
+beforeAll(() => {
+    global.localStorage = {
+        getItem: () => 'someToken'
+    };
+});
+
 test('App renders without crashing', () => {
     var mock = new MockAdapter(axios);
     mock.onGet(`${process.env.REACT_APP_USERS_SERVICE_URL}/users`).reply(200, response);
     const wrapper = shallow(<App />);
+});
+
+test('App will call componentWillMount when mounted', () => {
+    const onWillMount = jest.fn();
+    App.prototype.componentWillMount = onWillMount;
+    const wrapper = mount(<Router><App /></Router>);
+    expect(onWillMount).toHaveBeenCalledTimes(1);
 });

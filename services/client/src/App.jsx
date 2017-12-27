@@ -53,6 +53,12 @@ class App extends Component {
             .catch((err) => { console.log(err); });
     }
 
+    componentWillMount() {
+        if (window.localStorage.getItem('authToken')) {
+            this.setState({ isAuthenticated: true });
+        }
+    };
+
     componentDidMount() {
         this.getUsers();
     };
