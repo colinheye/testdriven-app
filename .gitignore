@@ -4,3 +4,4 @@ env
 htmlcov
 __snapshots__
 .env
+node_modules
