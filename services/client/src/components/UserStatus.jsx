@@ -12,6 +12,7 @@ class UserStatus extends Component {
             active: '',
             admin: ''
         };
+        this.getUserStatus = this.getUserStatus.bind(this);
     };
 
     componentDidMount() {
