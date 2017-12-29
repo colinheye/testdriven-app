@@ -18,7 +18,18 @@ services:
   - docker
 
 env:
-  DOCKER_COMPOSE_VERSION: 1.14.0
+  global:
+    - DOCKER_COMPOSE_VERSION=1.14.0
+    - COMMIT=${TRAVIS_COMMIT::8}
+    - MAIN_REPO=https://github.com/colinheye/testdriven-app.git
+    - USERS=test-driven-users
+    - USERS_REPO=${MAIN_REPO}#${TRAVIS_BRANCH}:services/users
+    - USERS_DB=test-driven-users_db
+    - USERS_DB_REPO=${MAIN_REPO}#${TRAVIS_BRANCH}:services/users/project/db
+    - CLIENT=test-driven-client
+    - CLIENT_REPO=${MAIN_REPO}#${TRAVIS_BRANCH}:services/client
+    - SWAGGER=test-driven-swagger
+    - SWAGGER_REPO=${MAIN_REPO}#${TRAVIS_BRANCH}:services/swagger
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -29,6 +40,7 @@ before_install:
 before_script:
   - export TEST_URL=http://127.0.0.1
   - export REACT_APP_USERS_SERVICE_URL=http://127.0.0.1
+  - export SECRET_KEY=my_precious
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3
@@ -40,4 +52,5 @@ script:
 after_script:
   - docker-compose -f docker-compose-dev.yml down
 
-  
+after_success:
+  - bash ./docker-push.sh  
